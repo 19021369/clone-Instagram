@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "clone_application",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "clone_application"
+	}
+}
