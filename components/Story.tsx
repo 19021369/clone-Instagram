@@ -1,9 +1,17 @@
+'use client'
 import React from 'react';
 
-const storys = () => {
+interface StorysProps {
+ url?: string;
+}
+
+const Story = (props: StorysProps) => {
+    const { url } = props;
+    
     return (
-        <div className="bg-[url('/image10.png')] bg-cover bg-[length:82px_82px] bg-center bg-no-repeat ">
-            <div className='p'></div>
+        <button className="bg-[length:82px_82px] bg-center bg-no-repeat"
+        style={{backgroundImage: `url('/${url}')`}}
+        >
             <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='97'
@@ -32,8 +40,8 @@ const storys = () => {
                     </linearGradient>
                 </defs>
             </svg>
-        </div>
+        </button>
     );
 };
 
-export default storys;
+export default Story;
