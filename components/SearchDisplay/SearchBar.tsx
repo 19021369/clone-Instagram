@@ -1,9 +1,11 @@
-import React from "react";
+"use client"
+import { useState } from "react";
 
 const SearchBar = () => {
+    const [content, setContent] = useState('foryou')
     return (
         <div className="h-[62px] w-full text-[#8D8D8D] flex text-2xl items-center gap-7">
-            <div className="search w-[400px] h-full rounded-[50px] bg-[#EFEFEF] flex justify-center items-center gap-5 px-5">
+            <div className="search w-[400px] h-full rounded-[50px] bg-[#EFEFEF] flex justify-center items-center px-5">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="29"
@@ -44,11 +46,11 @@ const SearchBar = () => {
                     />
                 </svg>
             </div>
-            <div className="whitespace-nowrap text-[#0095F6] font-bold text underline" >For you</div>
-            <button>Trending</button>
-            <button>Top</button>
-            <button>Recent</button>
-            <button>Reels</button>
+            <button className="whitespace-nowrap focus:text-[#0095F6] focus:font-bold focus:underline w-24" onClick={() => {setContent('foryou')}}>For you</button>
+            <button className="focus:text-[#0095F6] focus:font-bold focus:underline w-24" onClick={() => {setContent('trending')}}>Trending</button>
+            <button className="focus:text-[#0095F6] focus:font-bold focus:underline w-10" onClick={() => {setContent('top')}}>Top</button>
+            <button className="focus:text-[#0095F6] focus:font-bold focus:underline w-24" onClick={() => {setContent('recent')}}>Recent</button>
+            <button className="focus:text-[#0095F6] focus:font-bold focus:underline w-24" onClick={() => {setContent('reels')}}>Reels</button>
         </div>
     );
 };

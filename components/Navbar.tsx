@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const Navbar = () => {
     const router = usePathname();
-    console.log(router);
 
     return (
         <div className="w-[114px] h-[747px] bg-[#EFEFEF] rounded-[87px] flex justify-center items-center flex-col space-y-24">

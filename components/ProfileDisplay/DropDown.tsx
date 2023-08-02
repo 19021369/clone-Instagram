@@ -2,16 +2,15 @@
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useRef, useState } from "react";
 
-interface DropDownProps {
-    props?: any;
-}
 const DropDown = () => {
     return (
         <div>
             <Menu as="div" className="relative inline-block">
                 <div>
                     <Menu.Button>
-                        <div className="bg-[#DCDCDC] h-[70px] w-[43px] rounded-3xl flex items-center justify-center">
+                        <div
+                            className=" hover:bg-[#DCDCDC] focus:bg-[#DCDCDC] h-[70px] w-[43px] rounded-3xl flex items-center justify-center"
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="11"
