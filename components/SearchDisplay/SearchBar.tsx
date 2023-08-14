@@ -1,8 +1,10 @@
-"use client"
+"use client";
 import { useState } from "react";
+import Reels from "../ReelsDisplay/Reels";
 
 const SearchBar = () => {
-    const [content, setContent] = useState('foryou')
+    const [content, setContent] = useState("For you");
+    const buttonLists = ["For you", "Trending", "Top", "Recent", "Reels"];
     return (
         <div className="h-[62px] w-full text-[#8D8D8D] flex text-2xl items-center gap-7">
             <div className="search w-[400px] h-full rounded-[50px] bg-[#EFEFEF] flex justify-center items-center px-5">
@@ -16,13 +18,13 @@ const SearchBar = () => {
                     <path
                         d="M13.3442 24.6885C19.6095 24.6885 24.6885 19.6095 24.6885 13.3442C24.6885 7.07899 19.6095 2 13.3442 2C7.07899 2 2 7.07899 2 13.3442C2 19.6095 7.07899 24.6885 13.3442 24.6885Z"
                         stroke="#262626"
-                        stroke-width="3"
+                        strokeWidth="3"
                         stroke-miterlimit="10"
                     />
                     <path
                         d="M20.9461 21.7371L27 27.7842"
                         stroke="#262626"
-                        stroke-width="3"
+                        strokeWidth="3"
                         stroke-miterlimit="10"
                         stroke-linecap="round"
                     />
@@ -46,11 +48,19 @@ const SearchBar = () => {
                     />
                 </svg>
             </div>
-            <button className="whitespace-nowrap focus:text-[#0095F6] focus:font-bold focus:underline w-24" onClick={() => {setContent('foryou')}}>For you</button>
-            <button className="focus:text-[#0095F6] focus:font-bold focus:underline w-24" onClick={() => {setContent('trending')}}>Trending</button>
-            <button className="focus:text-[#0095F6] focus:font-bold focus:underline w-10" onClick={() => {setContent('top')}}>Top</button>
-            <button className="focus:text-[#0095F6] focus:font-bold focus:underline w-24" onClick={() => {setContent('recent')}}>Recent</button>
-            <button className="focus:text-[#0095F6] focus:font-bold focus:underline w-24" onClick={() => {setContent('reels')}}>Reels</button>
+            {buttonLists.map((buttonList, index) => {
+                return (
+                    <button
+                        key={index}
+                        className={`${buttonList === content && "text-[#0095F6] font-bold underline"}  w-24`}
+                        onClick={() => {
+                            setContent(buttonList);
+                        }}
+                    >
+                        {buttonList}
+                    </button>
+                );
+            })}
         </div>
     );
 };

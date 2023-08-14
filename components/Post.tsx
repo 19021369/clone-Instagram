@@ -83,7 +83,7 @@ const post = () => {
                                         rx="24"
                                         transform="rotate(180 48.5 48.5)"
                                         stroke="white"
-                                        stroke-opacity="0.2"
+                                        strokeOpacity="0.2"
                                     />
                                 </g>
                                 <defs>
@@ -161,7 +161,7 @@ const post = () => {
                                         rx="24"
                                         transform="rotate(180 48.5 48.5)"
                                         stroke="white"
-                                        stroke-opacity="0.2"
+                                        strokeOpacity="0.2"
                                     />
                                 </g>
                                 <defs>
@@ -229,7 +229,7 @@ const post = () => {
                                 cy="31"
                                 r="30"
                                 stroke="url(#paint0_linear_603_293)"
-                                stroke-width="2"
+                                strokeWidth="2"
                             />
                             <defs>
                                 <linearGradient
@@ -314,12 +314,12 @@ const post = () => {
                             height="45"
                             rx="22.5"
                             stroke="black"
-                            stroke-opacity="0.2"
+                            strokeOpacity="0.2"
                         />
                         <path
                             d="M107 19.978L125.578 15L121.856 32.9138L116.323 24.7075L107 19.978Z"
                             stroke="#262626"
-                            stroke-width="1.5"
+                            strokeWidth="1.5"
                             stroke-miterlimit="10"
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -327,7 +327,7 @@ const post = () => {
                         <path
                             d="M116.242 24.4062L125.578 14.9998"
                             stroke="#262626"
-                            stroke-width="1.5"
+                            strokeWidth="1.5"
                             stroke-miterlimit="10"
                             stroke-linecap="round"
                             stroke-linejoin="round"
@@ -335,13 +335,13 @@ const post = () => {
                         <path
                             d="M81.6432 29.1722C81.5975 29.0287 81.6196 28.8727 81.6988 28.7447C82.5482 27.3714 83.0391 25.7563 83.0391 24.0196C83.0391 19.0363 78.998 15 74.0196 15C69.0363 15 65 19.0363 65 24.0196C65 29.0028 69.0363 33.0391 74.0196 33.0391C75.8104 33.0391 77.4834 32.5155 78.8843 31.614C79.009 31.5338 79.1617 31.5083 79.3043 31.5489L81.8131 32.2629C82.1967 32.372 82.5474 32.0102 82.4263 31.6302L81.6432 29.1722Z"
                             stroke="#262626"
-                            stroke-width="1.5"
+                            strokeWidth="1.5"
                             stroke-miterlimit="10"
                         />
                         <path
                             d="M166.958 31.1593C166.958 31.9605 166.063 32.4363 165.399 31.9884L160.538 28.7098C160.2 28.4819 159.758 28.4819 159.42 28.7098L154.559 31.9884C153.895 32.4363 153 31.9605 153 31.1593V16C153 15.4477 153.448 15 154 15H165.958C166.511 15 166.958 15.4477 166.958 16V31.1593Z"
                             stroke="#262626"
-                            stroke-width="1.5"
+                            strokeWidth="1.5"
                             stroke-miterlimit="10"
                         />
                         <path

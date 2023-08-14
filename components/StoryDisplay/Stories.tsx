@@ -90,7 +90,7 @@ const Stories = () => {
                     <path
                         d="M2 2H41.45L21.73 37.35L17.96 15.68L2 2Z"
                         stroke="#F8F8F8"
-                        stroke-width="3"
+                        strokeWidth="3"
                         stroke-miterlimit="10"
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -98,7 +98,7 @@ const Stories = () => {
                     <path
                         d="M17.96 15.68L41.45 2"
                         stroke="#F8F8F8"
-                        stroke-width="3"
+                        strokeWidth="3"
                         stroke-miterlimit="10"
                         stroke-linecap="round"
                         stroke-linejoin="round"

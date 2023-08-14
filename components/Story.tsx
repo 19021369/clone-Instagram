@@ -24,7 +24,7 @@ const Story = (props: StorysProps) => {
                     cy='48.5'
                     r='47'
                     stroke='url(#paint0_linear_3_241)'
-                    stroke-width='3'
+                    strokeWidth='3'
                 />
                 <defs>
                     <linearGradient

@@ -1,11 +1,16 @@
 "use client";
 import { DropDown, Navbar } from "@/components";
+import { useUserProfile } from "@/network";
 import Link from "next/link";
-import React from "react";
+import React, { useMemo } from "react";
 
 const page = () => {
+    const { data: userRes } = useUserProfile();
+    
+    const userProfile = useMemo(() => userRes ?? [], [userRes]);
+
     return (
-        <div className="h-screen flex">
+        <div className="h-screen flex scroll">
             <div className="lside nav-bar w-[11.67%] h-full flex justify-center items-center">
                 <Navbar />
             </div>
@@ -43,10 +48,10 @@ const page = () => {
                                 ></div>
                                 <div className="text-lg flex flex-col gap-2 ml-16">
                                     <strong className="text-4xl font-semibold">
-                                        Aman UX
+                                       {userProfile[0]?.userName}
                                     </strong>
                                     <div className="flex gap-3 items-center">
-                                        @amanxux
+                                        @{userProfile[0]?.nickName}
                                         <button className="h-[26px] w-[26px] bg-[#EFEFEF] rounded-full flex items-center justify-center">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -75,10 +80,8 @@ const page = () => {
                                     </div>
                                     <div>
                                         {" "}
-                                        <strong>Bio:</strong> It always seems
-                                        impossible until it is done. 💕
-                                        <br /> Nature lover 🥀🍃🏔 UI/ UX
-                                        Designer 🖥
+                                        <strong>Bio: </strong>
+                                        {userProfile[0]?.bio}
                                     </div>
                                     <Link
                                         className="text-blue-500"
@@ -141,7 +144,7 @@ const page = () => {
                                         <path
                                             d="M25 28.2398C25 29.8419 23.2105 30.7937 21.8821 29.8982L14.1179 24.6645C13.4422 24.209 12.5578 24.209 11.8821 24.6645L4.11791 29.8982C2.78951 30.7937 1 29.8419 1 28.2398V3C1 1.89543 1.89543 1 3 1H23C24.1046 1 25 1.89543 25 3V28.2398Z"
                                             stroke="#8D8D8D"
-                                            stroke-width="2"
+                                            strokeWidth="2"
                                             stroke-miterlimit="10"
                                         />
                                     </svg>
@@ -177,9 +180,7 @@ const page = () => {
                         </div>
                     </div>
                     <div className="rside w-[23.61%] text-lg font-semibold flex flex-col items-center justify-end gap-4 mb-12">
-                        <div>
-                            Sugestions for you
-                        </div>
+                        <div>Sugestions for you</div>
 
                         <div className="grid grid-cols-2 gap-5 w-9/12">
                             <div className="flex flex-col items-center">

@@ -63,13 +63,13 @@ const Messagers = (props: MessagersProps) => {
                         <path
                             d="M13.3442 24.6885C19.6095 24.6885 24.6885 19.6095 24.6885 13.3442C24.6885 7.07899 19.6095 2 13.3442 2C7.07899 2 2 7.07899 2 13.3442C2 19.6095 7.07899 24.6885 13.3442 24.6885Z"
                             stroke="#262626"
-                            stroke-width="3"
+                            strokeWidth="3"
                             stroke-miterlimit="10"
                         />
                         <path
                             d="M20.9461 21.7371L27 27.7842"
                             stroke="#262626"
-                            stroke-width="3"
+                            strokeWidth="3"
                             stroke-miterlimit="10"
                             stroke-linecap="round"
                         />
