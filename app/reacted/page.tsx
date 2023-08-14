@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { useReducer } from "react";
 
@@ -19,7 +20,7 @@ const reducer = (state: any, action: any) => {
         case "COMPLETE":
             return state.map((todo: any) => {
                 if (todo.id === action.id) {
-                    return { ...todo, complete: !todo.complete };
+                    return {...todo, complete: !todo.complete}
                 } else {
                     return todo;
                 }

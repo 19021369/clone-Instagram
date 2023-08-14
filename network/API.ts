@@ -35,14 +35,14 @@ class HTTPClient implements APIService {
 }
 
 class API {
-	client: HTTPClient;
+	tokenclient: HTTPClient;
 	publicClient: HTTPClient;
 
 	constructor() {
 		const apiBaseUrl = "http://localhost:8080/";
 
 		const instance = ApiManager.getInstance(apiBaseUrl);
-		this.client = new HTTPClient(instance);
+		this.tokenclient = new HTTPClient(instance);
 
 		const publicInstance = ApiManager.getInstance(apiBaseUrl, false);
 		this.publicClient = new HTTPClient(publicInstance);
@@ -56,8 +56,8 @@ class API {
 		return this.publicClient.get<Response<Post[]>>(Endpoint.GET_POSTS, {});
 	}
 
-	createPost = (): Promise<Response<Post>> => {
-		return this.publicClient.post<Response<Post>>(Endpoint.CREATE_POST, {});
+	createPost = (params: any): Promise<Response<Post>> => {
+		return this.tokenclient.post<Response<Post>>(Endpoint.CREATE_POST, {params});
 	}
 }
 

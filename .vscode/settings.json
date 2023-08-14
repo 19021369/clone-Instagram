@@ -1,3 +1,4 @@
 {
-    "liveServer.settings.multiRootWorkspaceName": "clone_application"
+    "liveServer.settings.multiRootWorkspaceName": "clone_application",
+    "liveServer.settings.port": 3001
 }

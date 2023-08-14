@@ -1,11 +1,11 @@
 import { AxiosError, AxiosRequestConfig } from "axios";
 
 export function addExtraInfo(config: any) {
-	const token = "token";
+	const token = localStorage.getItem('token');
 
-	config.data = {
-		...config.data,
-		apikey: token,
+	config.headers = {
+		...config.headers,
+		accessToken: token,
 	};
 
 	return config;

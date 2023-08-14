@@ -10,6 +10,7 @@ import Reels from "./ReelsDisplay/Reels";
 import SearchBar from "./SearchDisplay/SearchBar";
 import ImageList from "./SearchDisplay/ImageList";
 import DropDown from "./ProfileDisplay/DropDown";
+import Buttons from "./Buttons";
 export {
     Navbar,
     Homepage,
@@ -23,4 +24,5 @@ export {
     SearchBar,
     ImageList,
     DropDown,
+    Buttons
 };

@@ -1,13 +1,47 @@
 "use client";
 import { DropDown, Navbar } from "@/components";
-import { useUserProfile } from "@/network";
+import { useCreatePost, useUserProfile } from "@/network";
 import Link from "next/link";
 import React, { useMemo } from "react";
+import Popup from "reactjs-popup";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+
+const schema = yup.object({
+    username: yup
+        .string()
+        .required("Vui lòng nhập tên")
+        .min(1, "Vui lòng không bỏ trống"),
+    nickname: yup.string().required("Vui lòng nhập tên"),
+    bio: yup.string().required("Vui lòng nhập tiểu sử"),
+});
 
 const page = () => {
     const { data: userRes } = useUserProfile();
+    const userProfiles = useMemo(() => userRes ?? [], [userRes]);
+    const userProfile = userProfiles?.shift();
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(schema),
+    });
     
-    const userProfile = useMemo(() => userRes ?? [], [userRes]);
+    const {mutateAsync: createPost, isLoading } = useCreatePost();
+
+    const onSubmit = (data: any) => {
+        createPost(data)
+        .then((post) =>{
+            console.log("post", post);
+            
+        }).catch((error) => {})
+        // console.log(data)
+    };
+
 
     return (
         <div className="h-screen flex scroll">
@@ -48,10 +82,10 @@ const page = () => {
                                 ></div>
                                 <div className="text-lg flex flex-col gap-2 ml-16">
                                     <strong className="text-4xl font-semibold">
-                                       {userProfile[0]?.userName}
+                                        {userProfile?.userName}
                                     </strong>
                                     <div className="flex gap-3 items-center">
-                                        @{userProfile[0]?.nickName}
+                                        @{userProfile?.nickName}
                                         <button className="h-[26px] w-[26px] bg-[#EFEFEF] rounded-full flex items-center justify-center">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +115,7 @@ const page = () => {
                                     <div>
                                         {" "}
                                         <strong>Bio: </strong>
-                                        {userProfile[0]?.bio}
+                                        {userProfile?.bio}
                                     </div>
                                     <Link
                                         className="text-blue-500"
@@ -91,10 +125,78 @@ const page = () => {
                                     </Link>
 
                                     <div>
-                                        <button className="w-[141px] h-10 rounded-[19.5px] bg-[#EFEFEF]">
-                                            {" "}
-                                            edit profile
-                                        </button>
+                                        <Popup
+                                            trigger={
+                                                <button className="w-[141px] h-10 rounded-[19.5px] bg-[#EFEFEF]">
+                                                    {" "}
+                                                    edit profile
+                                                </button>
+                                            }
+                                        >
+                                            <form className="bg-gray-900 bg-opacity-80 w-72 p-10 rounded-3xl text-white flex flex-col gap-10">
+                                                <div>
+                                                    <label htmlFor="username">
+                                                        User name:
+                                                    </label>{" "}
+                                                    <input
+                                                        className="bg-red h-[53px] border-gray-500 border-2 rounded-lg px-2 w-full text-black"
+                                                        placeholder="Tên*"
+                                                        {...register(
+                                                            "username"
+                                                        )}
+                                                    />
+                                                    <p className="text-red-500">
+                                                        {
+                                                            errors.username
+                                                                ?.message
+                                                        }
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="nickname">
+                                                        Nick name:
+                                                    </label>{" "}
+                                                    <input
+                                                        className="bg-red w-full h-[53px] border-gray-500 border-2 rounded-lg px-2 text-black"
+                                                        placeholder="nickname*"
+                                                        {...register(
+                                                            "nickname"
+                                                        )}
+                                                    />
+                                                    <p className="text-red-500">
+                                                        {
+                                                            errors.nickname
+                                                                ?.message
+                                                        }
+                                                    </p>
+                                                </div>
+                                                <div>
+                                                    <label htmlFor="nickname">
+                                                        Bio:
+                                                    </label>{" "}
+                                                    <input
+                                                        className="bg-red w-full h-[53px] border-gray-500 border-2 rounded-lg px-2 text-black"
+                                                        placeholder="Bio*"
+                                                        {...register("bio")}
+                                                    />
+                                                    <p className="text-red-500">
+                                                        {errors.bio?.message}
+                                                    </p>
+                                                </div>
+                                                <div className=" w-full flex justify-center items-center mt-5">
+                                                    <button
+                                                        className=" bg-red-600 w-[160px] h-[52px] rounded-lg flex justify-center items-center"
+                                                        onClick={handleSubmit(
+                                                            onSubmit
+                                                        )}
+                                                    >
+                                                        <h1 className="text-white font-nigger uppercase ">
+                                                            Gửi
+                                                        </h1>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </Popup>
                                     </div>
                                 </div>
                             </div>
