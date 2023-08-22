@@ -57,7 +57,10 @@ class API {
 	}
 
 	createPost = (params: any): Promise<Response<Post>> => {
-		return this.tokenclient.post<Response<Post>>(Endpoint.CREATE_POST, {params});
+
+		console.log("params", params);
+		
+		return this.tokenclient.post<Response<Post>>(Endpoint.CREATE_POST, params);
 	}
 }
 

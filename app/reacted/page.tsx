@@ -1,6 +1,7 @@
-"use client"
+"use client";
 import React from "react";
 import { useReducer } from "react";
+import { useForm } from "react-hook-form";
 
 const initialTodos = [
     {
@@ -20,7 +21,7 @@ const reducer = (state: any, action: any) => {
         case "COMPLETE":
             return state.map((todo: any) => {
                 if (todo.id === action.id) {
-                    return {...todo, complete: !todo.complete}
+                    return { ...todo, complete: !todo.complete };
                 } else {
                     return todo;
                 }
@@ -31,27 +32,16 @@ const reducer = (state: any, action: any) => {
 };
 
 const page = () => {
-    const [todos, dispatch] = useReducer(reducer, initialTodos);
+    const { register, handleSubmit } = useForm();
 
-    const handleComplete = (todo: any) => {
-        dispatch({ type: "COMPLETE", id: todo.id });
+    const onSubmit = (data : any) => {
+        console.log(data);
     };
-
     return (
-        <div>
-            {todos.map((todo: any) => (
-                <div key={todo.id}>
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={todo.complete}
-                            onChange={() => handleComplete(todo)}
-                        />
-                        {todo.title}
-                    </label>
-                </div>
-            ))}
-        </div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <input {...register} type="file" name="picture" />
+            <button>Submit</button>
+        </form>
     );
 };
 

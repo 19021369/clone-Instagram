@@ -31,15 +31,14 @@ const page = () => {
         resolver: yupResolver(schema),
     });
     
-    const {mutateAsync: createPost, isLoading } = useCreatePost();
+    const {mutateAsync: editUser, isLoading } = useCreatePost();
 
     const onSubmit = (data: any) => {
-        createPost(data)
-        .then((post) =>{
-            console.log("post", post);
+        editUser(data)
+        .then((userInformation) =>{
+            console.log("userInformation", userInformation);
             
         }).catch((error) => {})
-        // console.log(data)
     };
 
 

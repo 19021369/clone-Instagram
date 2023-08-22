@@ -240,8 +240,8 @@ const post = () => {
                                     y2="59.4433"
                                     gradientUnits="userSpaceOnUse"
                                 >
-                                    <stop stop-color="#D62977" />
-                                    <stop offset="1" stop-color="#ED8128" />
+                                    <stop stopColor="#D62977" />
+                                    <stop offset="1" stopColor="#ED8128" />
                                 </linearGradient>
                             </defs>
                         </svg>

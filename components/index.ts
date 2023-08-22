@@ -11,6 +11,8 @@ import SearchBar from "./SearchDisplay/SearchBar";
 import ImageList from "./SearchDisplay/ImageList";
 import DropDown from "./ProfileDisplay/DropDown";
 import Buttons from "./Buttons";
+import Carousels from "./Carousels";
+
 export {
     Navbar,
     Homepage,
@@ -24,5 +26,6 @@ export {
     SearchBar,
     ImageList,
     DropDown,
-    Buttons
+    Buttons,
+    Carousels
 };

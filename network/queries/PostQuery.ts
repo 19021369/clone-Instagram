@@ -4,4 +4,4 @@ import { QueryKey } from "./QueryKey";
 
 export const useGetPost = () => useQuery([QueryKey.POSTS],() => API.getPost());
 
-export const useCreatePost = () => useMutation((params) => API.createPost(params));
+export const useCreatePost = () => useMutation((params : any) => API.createPost(params));
