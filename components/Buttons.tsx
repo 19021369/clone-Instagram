@@ -21,7 +21,6 @@ const Buttons = () => {
     const handleFile = (e: any) => {
         const newFiles: any = [];
         for (let i = 0; i < e.target.files.length; i++) {
-            // setFiles(arr => ([...arr, e.target.files[i]]))
             newFiles.push(e.target.files[i]);
         }
         setFiles(newFiles);
@@ -35,20 +34,21 @@ const Buttons = () => {
     const { register, handleSubmit } = useForm();
 
     const handleShare = (data: any) => {
+        setPostType('post');
         const obj = {
             createdByUserId: `${id}`,
-            createdDatetime: `${location}`,
+            createdDatetime: `${Date.now()}`,
             caption: `${data.caption}`,
             postType: `${postType}`,
         };
 
-        const json = JSON.stringify(data);
+        const json = JSON.stringify(obj);
         const blob = new Blob([json], {
             type: "application/json",
         });
         var lastData = new FormData();
 
-        lastData.append("caption", data.caption);
+        lastData.append("post", blob);
         files.map((file) => {
             lastData.append("image", file);
         });

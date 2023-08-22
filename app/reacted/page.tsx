@@ -1,47 +1,28 @@
-"use client";
-import React from "react";
-import { useReducer } from "react";
-import { useForm } from "react-hook-form";
-
-const initialTodos = [
-    {
-        id: 1,
-        title: "Todo 1",
-        complete: false,
-    },
-    {
-        id: 2,
-        title: "Todo 2",
-        complete: false,
-    },
-];
-
-const reducer = (state: any, action: any) => {
-    switch (action.type) {
-        case "COMPLETE":
-            return state.map((todo: any) => {
-                if (todo.id === action.id) {
-                    return { ...todo, complete: !todo.complete };
-                } else {
-                    return todo;
-                }
-            });
-        default:
-            return state;
-    }
-};
+'use client';
+import useStore from '@/store/useStore';
+import React, { useState } from 'react';
 
 const page = () => {
-    const { register, handleSubmit } = useForm();
+    const [todo, setTodo] = useState<string>('');
+    const todos = useStore((state) => state.todos);
+    const addTodo = useStore((state) => state.addTodo);
 
-    const onSubmit = (data : any) => {
-        console.log(data);
+    const add = () => {
+        addTodo(todo);
     };
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <input {...register} type="file" name="picture" />
-            <button>Submit</button>
-        </form>
+        <div>
+            <div>Todo list</div>
+            <input
+                className="border-black"
+                type="text"
+                onChange={(e) => setTodo(e.target.value)}
+            ></input>
+            <button onClick={add} className="border-black">Add</button>
+            {todos.map((todo) => (
+                <div>{todo}</div>
+            ))}
+        </div>
     );
 };
 

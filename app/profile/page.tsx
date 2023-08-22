@@ -1,13 +1,11 @@
 "use client";
 import { DropDown, Navbar } from "@/components";
-import { useCreatePost, useUserProfile } from "@/network";
 import Link from "next/link";
-import React, { useMemo } from "react";
 import Popup from "reactjs-popup";
-
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import useStore from "@/store/useStore";
 
 const schema = yup.object({
     username: yup
@@ -19,10 +17,9 @@ const schema = yup.object({
 });
 
 const page = () => {
-    const { data: userRes } = useUserProfile();
-    const userProfiles = useMemo(() => userRes ?? [], [userRes]);
-    const userProfile = userProfiles?.shift();
 
+    const userProfile = useStore(state => state.user)
+    
     const {
         register,
         handleSubmit,
@@ -31,15 +28,15 @@ const page = () => {
         resolver: yupResolver(schema),
     });
     
-    const {mutateAsync: editUser, isLoading } = useCreatePost();
+    // const {mutateAsync: editUser, isLoading } = useChangeUserInformation();
 
-    const onSubmit = (data: any) => {
-        editUser(data)
-        .then((userInformation) =>{
-            console.log("userInformation", userInformation);
+    // const onSubmit = (data: any) => {
+    //     editUser(data)
+    //     .then((userInformation : any) =>{
+    //         console.log("userInformation", userInformation);
             
-        }).catch((error) => {})
-    };
+    //     }).catch((error) => {})
+    // };
 
 
     return (
